@@ -306,7 +306,8 @@ abstract class Utils {
   }
 
   static double convertDpToPixel(double dp) {
-    return ScreenUtils.getInstance().getSp(dp);
+    return dp;
+    //return ScreenUtils.getInstance().getSp(dp);
   }
 
   static int calcTextWidth(TextPainter p, String demoText) {
