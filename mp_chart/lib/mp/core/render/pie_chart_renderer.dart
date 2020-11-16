@@ -510,8 +510,10 @@ class PieChartRenderer extends DataRenderer {
         double value = _painter.isUsePercentValuesEnabled()
             ? entry.y / yValueSum * 100
             : entry.y;
-        String formattedValue = formatter.getPieLabel(value, entry);
-        String entryLabel = entry.label;
+        String formattedValue = entry.label;
+        String entryLabel = (entry.y / yValueSum > 0.02)
+            ? formatter.getPieLabel(value, entry)
+            : ''; //交换一下，小于2%的不显示label，这样看着美观一点
 
         final double sliceXBase = cos(transformedAngle * Utils.FDEG2RAD);
         final double sliceYBase = sin(transformedAngle * Utils.FDEG2RAD);
