@@ -39,6 +39,7 @@ class PieChartRenderer extends DataRenderer {
 //   StaticLayout _centerTextLayout;
   // ignore: unused_field
   String _centerTextLastValue;
+  Color _centerTextColor = ColorUtils.BLACK;
 
   // ignore: unused_field
   Rect _centerTextLastBounds = Rect.zero;
@@ -820,7 +821,7 @@ class PieChartRenderer extends DataRenderer {
       c.save();
 
       _centerTextPaint = PainterUtils.create(_centerTextPaint, centerText,
-          ColorUtils.BLACK, Utils.convertDpToPixel(12));
+          _centerTextColor, Utils.convertDpToPixel(12));
       _centerTextPaint.layout();
       _centerTextPaint.paint(
           c,
@@ -1109,6 +1110,10 @@ class PieChartRenderer extends DataRenderer {
 
   void setHoleColor(Color color) {
     holePaint.color = color;
+  }
+  
+  void setCenterTextColor(Color color) {
+    _centerTextColor = color;
   }
 
   /// Sets the color the transparent-circle should have.
