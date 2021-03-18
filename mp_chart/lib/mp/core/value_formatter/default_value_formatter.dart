@@ -37,8 +37,9 @@ class DefaultValueFormatter extends ValueFormatter {
   String getFormattedValue1(double value) {
     // put more logic here ...
     // avoid memory allocations here (for performance reasons)
-
-    return _format.format(value);
+    NumberFormat format = new NumberFormat();
+    return format.format(value);
+   // return _format.format(value);
   }
 
   @override
