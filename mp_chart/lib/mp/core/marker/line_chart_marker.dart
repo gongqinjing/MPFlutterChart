@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/painting.dart';
 import 'package:mp_chart/mp/core/entry/entry.dart';
+import 'package:mp_chart/mp/core/entry/pie_entry.dart';
 import 'package:mp_chart/mp/core/highlight/highlight.dart';
 import 'package:mp_chart/mp/core/marker/i_marker.dart';
 import 'package:mp_chart/mp/core/poolable/point.dart';
@@ -11,7 +12,7 @@ import 'package:mp_chart/mp/core/utils/utils.dart';
 import 'package:mp_chart/mp/core/value_formatter/default_value_formatter.dart';
 
 class LineChartMarker implements IMarker {
-  Entry _entry;
+  PieEntry _entry;
   // ignore: unused_field
   Highlight _highlight;
   double _dx = 0.0;
@@ -38,7 +39,7 @@ class LineChartMarker implements IMarker {
   void draw(Canvas canvas, double posX, double posY) {
     TextPainter painter = PainterUtils.create(
         null,
-        "${_formatter.getFormattedValue1(_entry.x)},${_formatter.getFormattedValue1(_entry.y)}",
+        "${_entry.label}:${_formatter.getFormattedValue1(_entry.y)}",
         _textColor,
         _fontSize);
     Paint paint = Paint()
